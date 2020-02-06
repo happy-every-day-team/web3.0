@@ -20,6 +20,7 @@ module.exports = app => {
       created_at: DATE,
       updated_at: DATE
     }, {
+      timestamps: false,
       underscored: true,
       tableName: 'menu'
     })
