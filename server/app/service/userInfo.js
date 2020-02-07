@@ -49,7 +49,7 @@ class UserInfoService extends Service {
      */
     async findUserInfoById(id) {
         let userInfo = ''
-
+        
         return userInfo
     }
 
@@ -63,7 +63,7 @@ class UserInfoService extends Service {
      */
     async findUser(param){
         let arr = []
-
+        arr = await this.ctx.service.mysql.findAll(param,'userInfo')
         return arr
     }
 
