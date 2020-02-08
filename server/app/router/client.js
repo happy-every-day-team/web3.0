@@ -3,13 +3,13 @@ module.exports = app => {
     const adminauth = app.middleware.adminauth();
     //测试
     router.get('/client/index', controller.client.home.index);
-    // 资源分享界面的接口
+    资源分享界面的接口
     router.get('/client/resource/getResource', controller.client.resource.getResource); // 获取资源列表
-    // router.post('/client/resource/searchResource', controller.resource.searchResource); // 搜索资源
-    // // 成果展示界面的接口
-    // router.post('/client/achievement/getAchievement', controller.achievement.getAchievement); // 获取成果展示界面的接口
-    // router.post('/client/achievement/searchAchievement', controller.achievement.searchAchievement); // 搜索成果资源
-    // //资源发布接口
+    router.get('/client/resource/searchResource', controller.client.resource.searchResource); // 搜索资源
+    // 成果展示界面的接口
+    router.get('/client/achievement/getAchievement', controller.client.achievement.getAchievement); // 获取成果展示界面的接口
+    router.get('/client/achievement/searchAchievement', controller.client.achievement.searchAchievement); // 搜索成果资源
+    //资源发布接口
     // router.post('/client/resourceIssue/getResourceIssue', controller.resourceIssue.getResourceIssue); // 获取资源发布界面的信息
     // router.post('/client/resourceIssue/uploadResource', controller.resourceIssue.uploadResource); // 上传发布资源
     // router.post('/client/resourceIssue/uploadResourceCover', controller.resourceIssue.uploadResourceCover); // 上传封面图片
