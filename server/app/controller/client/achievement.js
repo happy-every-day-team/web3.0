@@ -2,6 +2,7 @@
 const Controller = require('egg').Controller
 
 class achievementContoller extends Controller{
+  //得到成果并展示
     async getAchievement(){
         const table = 'AchievementType';
         const table1 = 'Achievement';
@@ -49,6 +50,7 @@ class achievementContoller extends Controller{
           }
         }
     }
+    //模糊查询成果
     async searchAchievement(){
         const Op = this.app.Sequelize.Op;
     // const value = this.ctx.request.body;

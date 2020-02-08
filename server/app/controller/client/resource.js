@@ -2,6 +2,7 @@
 const Controller = require('egg').Controller;
 
 class ResourceController extends Controller {
+  //得到资源并展示
   async getResource() {
     const table = 'ResourceType';
     const table1 = 'Resource';
@@ -49,6 +50,7 @@ class ResourceController extends Controller {
       }
     }
   }
+  //模糊查询资源
   async searchResource() {
     const Op = this.app.Sequelize.Op;
     // const value = this.ctx.request.body;
