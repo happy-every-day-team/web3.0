@@ -62,7 +62,7 @@ class UserService extends Service {
      */
     async findUser(id) {
         let user = ''
-
+        arr = await this.ctx.service.mysql.findAll({ where: { userid: id, status: 1 }},'user')
         return user
     }
 }
