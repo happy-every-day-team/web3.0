@@ -22,7 +22,7 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
-
+  //sequelize使用
   config.sequelize = {
     dialect: 'mysql',
     host: '127.0.0.1',
@@ -31,7 +31,11 @@ module.exports = appInfo => {
     port: 3306,
     database: 'pzhuweb',
   }
-
+  // 七牛云秘钥
+  config.qiniuKey = {
+    accessKey: '05R74ylMRB--twen8uGQPIvGtcQoj2lsH0Ay1dDd',
+    secretKey: 'SswzXtqs_u7KYIBY_fSrNjhe3Afy_ZXfGMGOcYHX'
+  };
   return {
     ...config,
     ...userConfig,

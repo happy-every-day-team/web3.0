@@ -76,21 +76,93 @@ class resourceContoller extends Controller{
             success:1,
         }
     }
-    //上传资源封面（需要使用七牛云？）
-    async uploadResourceCover(){
-
-    }
+    //上传资源封面
+   async uploadResourceCover(){
+       let {id,userid,key,status} = thix.ctx.request.body;
+       id = parseInt(id);
+       const posterlink = await this.ctx.service.qiniu.getCDN(key);
+       const params = {
+           userid,
+           posterlink,
+           status:2
+       };
+       let resource;
+       if (parseInt(status) === 1) {
+        resource = await this.ctx.service.mysql.create(params, 'Resource');
+      } else {
+        resource = await this.ctx.service.mysql.findById(id, 'Resource');
+        await resource.update(params);
+      }
+      if(resource.length>0){
+        this.ctx.status = 200;
+        this.ctx.body = {
+          success: 1,
+          data: resource
+        }; 
+      }else{
+          this.ctx.status=404;
+      }
+     
+}
     //删除资源封面
     async delResourceCover(){
-
+        const {id,posterlink} = this.ctx.request.body;
+        const array = posterlink.split('/');
+        const key = array[array.length-1];
+        const params = {
+            posterlink:''
+        };
+        const resource = await this.ctx.service.mysql.findById(id,'Resource');
+        await resource.update(params);
+        await this.ctx.service.qiniu.deleteFile('images',key)//?
+        this.ctx.status = 200;
+        this.ctx.body = {
+            success:1
+        }
     }
     //上传资源附件
     async uploadResourceAttachment(){
-
+        let { id, userid, key, status } = this.ctx.request.body;
+        id = parseInt(id);
+        const attachment = await this.ctx.service.qiniu.getCDN(key);
+        const params = {
+          userid,
+          attachment,
+          status: 2
+        };
+        let resource;
+        if (parseInt(status) === 1) {
+          resource = await this.ctx.service.mysql.create(params, 'Resource');
+        } else {
+          resource = await this.ctx.service.mysql.findById(id, 'Resource');
+          await resource.update(params);
+        }
+        this.ctx.status = 200;
+        this.ctx.body = {
+          success: 1,
+          data: resource
+        };
     }
     //删除资源附件
     async delResourceAttachment(){
-
+        const {id,attachment} = this.ctx.request.body;
+        const array = attachment.split('/');
+        const key = array[array.length-1];
+        const params = {
+            attachment:''
+        };
+        const resource = await this.ctx.service.mysql.findById(id,'Resource');
+        await resource.update(params);
+        await this.ctx.service.mysql.deleteFile('images',key);
+        this.ctx.status = 200;
+        if(resource.length>0){
+            this.ctx.body = {
+                success:1
+            }
+        }else{
+            this.ctx.status=404;
+        }
+       
     }
 }
 module.exports = resourceContoller;
