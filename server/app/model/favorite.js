@@ -4,7 +4,7 @@ module.exports = app => {
   const { INTEGER, STRING, DATE } = app.Sequelize
     const Favorite = app.model.define('Favorite', {
       id: {
-        type: STRING(10),
+        type: INTEGER(10),
         primaryKey: true,
         autoIncrement: true
       },
