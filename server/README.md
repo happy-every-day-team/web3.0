@@ -33,6 +33,7 @@ $ npm stop
 [egg]: https://eggjs.org
 
 #### server接口编写
+http://127.0.0.1:7001
 ##### 前端接口编写
 ##### 资源展示界面的接口
 
@@ -68,3 +69,20 @@ $ npm stop
     router.post('/client/material/exportMaterials', controller.client.material.exportMaterials); // 个人成果材料导出
 
 ```
+##### 后台接口
+##### 资源增删查改（未测试）
+```
+   router.post('/admin/backResource/getResourceInfo', controller.admin.resource.getResourceInfo);
+    router.post('/admin/backResource/delResource', controller.admin.reource.delResource);// 删除资源信息
+    router.post('/admin/backResource/addResourceTag', controller.admin.resource.addResourceTag);// 添加资源类别
+    router.post('/admin/backResource/delResourceTag', controller.admin.resource.delResourceTag);// 删除资源类别
+```
+##### 成果增删查改（未测试）
+```
+    router.post('/admin/backAchievement/getAchievementInfo', controller.admin.achievement.getAchievementInfo);// 获取成果信息
+    router.post('/admin/backAchievement/delAchievement', controller.admin.achievement.delAchievement);// 删除成果
+    router.post('/admin/backAchievement/addAchievementTag', controller.admin.achievement.addAchievementTag);// 添加成果类别
+    router.post('/admin/backAchievement/delAchievementTag', controller.admin.achievement.delAchievementTag);// 删除成果类别
+    router.post('/admin/backAchievement/isShow', controller.admin.achievement.isShow);// 是否展示成果
+```
+##### 个人材料接口

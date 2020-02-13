@@ -31,8 +31,8 @@ class achievementContoller extends Controller{
         };
         let achievementType = await this.ctx.service.mysql.findAll(params1, table);
         let achievement = await this.ctx.service.mysql.findAll(params, table1);
-        this.ctx.status = 200;
         if (achievement.length > 0) {
+          this.ctx.status = 200;
           this.ctx.body = {
             success: 1,
             data: {
@@ -41,12 +41,9 @@ class achievementContoller extends Controller{
             }
           }
         } else {
+          this.ctx.status = 404;
           this.ctx.body = {
-            success: 0,
-            data: {
-                achievementType,
-                achievement
-            }
+            success: 0
           }
         }
     }
