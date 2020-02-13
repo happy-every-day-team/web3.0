@@ -6,6 +6,7 @@ module.exports = app => {
       id: {
         type: INTEGER(10),
         primaryKey: true,
+        autoIncrement: true
       },
       content: {
         type: STRING(255),
@@ -14,7 +15,7 @@ module.exports = app => {
       user_id: {
         type: STRING(16),
         references: {
-          model: 'User',
+          model: 'UserInfo',
           key: 'id'
         }
       },
@@ -28,7 +29,7 @@ module.exports = app => {
       fathercomment_id: {
         type: STRING(16),
         references: {
-          model: 'User',
+          model: 'UserInfo',
           key: 'id'
         }
       },
@@ -36,15 +37,15 @@ module.exports = app => {
       created_at: DATE,
       status: BOOLEAN(4)
     }, {
-      // timestamps: false,
+      timestamps: false,
       underscored: true,
       tableName: 'comment'
     })
 
     Comment.associate = function() {
       app.model.Comment.belongsTo(app.model.Article, { foreignKey: 'article_id', targetKey: 'id'})
-      app.model.Comment.belongsTo(app.model.User, { foreignKey: 'user_id', targetKey: 'id'})
-      app.model.Comment.belongsTo(app.model.User, { foreignKey: 'fathercomment_id', targetKey: 'id'})
+      app.model.Comment.belongsTo(app.model.UserInfo, { foreignKey: 'user_id', targetKey: 'id'})
+      // app.model.Comment.belongsTo(app.model.UserInfo, { foreignKey: 'fathercomment_id', targetKey: 'id'})
     }
     return Comment
 }
