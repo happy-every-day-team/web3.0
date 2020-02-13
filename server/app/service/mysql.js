@@ -12,13 +12,13 @@ class MysqlService extends Service {
 
   // 通过 id 查询数据
   async findById(params, table) {
-    const result = await this.ctx.model[table].findById(params)
+    const result = await this.ctx.model[table].findByPk(params)
     return result
   }
 
   // 更新数据
-  async update(params, table) {
-    const result = await this.ctx.model[table].update(params)
+  async update(params, option, table) {
+    const result = await this.ctx.model[table].update(params, option)
     return result
   }
 
