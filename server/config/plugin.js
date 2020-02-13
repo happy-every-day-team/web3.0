@@ -9,5 +9,17 @@ module.exports = {
   sequelize: {
     enable: true,
     package: 'egg-sequelize',
+  },
+  qiniu: {
+    enable: true,
+    package: 'qiniu'
+  },
+  cors: {
+    enable: true,
+    package: 'egg-cors'
+  },
+  ejs: {
+    enable: true,
+    package: 'egg-view-ejs'
   }
 };
