@@ -64,9 +64,10 @@ http://127.0.0.1:7001
     router.post('/client/achievementIssue/uploadAchievementAttachment', controller.client.achievementIssue.uploadAchievementAttachment); // 上传资源附件
     router.post('/client/achievementIssue/delAchievementAttachment', controller.client.achievementIssue.delAchievementAttachment); // 删除附加
 ```
-##### 个人材料中心
+##### 个人材料中心（未测试）
 ```
     router.post('/client/material/exportMaterials', controller.client.material.exportMaterials); // 个人成果材料导出
+    router.post('/client/material/teacherView', controller.client.material.teacherView); // 查看教师给自己的指导记录
 
 ```
 ##### 后台接口
@@ -85,4 +86,10 @@ http://127.0.0.1:7001
     router.post('/admin/backAchievement/delAchievementTag', controller.admin.achievement.delAchievementTag);// 删除成果类别
     router.post('/admin/backAchievement/isShow', controller.admin.achievement.isShow);// 是否展示成果
 ```
-##### 个人材料接口
+##### 个人材料接口（未测试）
+```
+    router.post('/admin/backMaterials/teacherView', controller.admin.materials.teacherView);// 教师查看指导记录
+    router.post('/admin/backMaterials/teacherDeleteRecord', controller.admin.materials.teacherDeleteRecord);// 教师删除指导记录
+    router.post('/admin/backMaterials/showUserAchievement', controller.admin.materials.showUserAchievement);// 展示用户成果
+    router.post('/admin/backMaterials/exportMaterials', controller.admin.materials.exportMaterials);// 个人材料导出
+```

@@ -25,7 +25,7 @@ module.exports = app => {
     router.post('/client/achievementIssue/delAchievementAttachment', controller.client.achievementIssue.delAchievementAttachment); // 删除附加
     //材料生成中心
     // router.get('/client/user/getUserInfo', controller.client.user.getUserInfo); // 获取成员基本信息生成表格
-    // router.post('/client/material/teacherView', controller.personal.teacherView); // 查看教师给自己的指导记录
+    router.post('/client/material/teacherView', controller.client.material.teacherView); // 查看教师给自己的指导记录
     // router.post('/client/achievement/getAchievement', controller.personal.teacherView); // 获取用户成果
     router.post('/client/material/exportMaterials', controller.client.material.exportMaterials); // 个人成果材料导出
 

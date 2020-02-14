@@ -13,9 +13,9 @@ module.exports = app => {
     router.post('/admin/backAchievement/delAchievementTag', controller.admin.achievement.delAchievementTag);// 删除成果类别
     router.post('/admin/backAchievement/isShow', controller.admin.achievement.isShow);// 是否展示成果
     //材料生成中心
-    // router.post('/admin/backMaterials/teacherView', controller.admin.materials.teacherView);// 教师查看指导记录
-    // router.post('/admin/backMaterials/teacherDeleteRecord', controller.admin.materials.teacherDeleteRecord);// 教师删除指导记录
-    // router.post('/admin/backMaterials/showUserAchievement', controller.admin.materials.showUserAchievement);// 展示用户成果
+    router.post('/admin/backMaterials/teacherView', controller.admin.materials.teacherView);// 教师查看指导记录
+    router.post('/admin/backMaterials/teacherDeleteRecord', controller.admin.materials.teacherDeleteRecord);// 教师删除指导记录
+    router.post('/admin/backMaterials/showUserAchievement', controller.admin.materials.showUserAchievement);// 展示用户成果
     router.post('/admin/backMaterials/exportMaterials', controller.admin.materials.exportMaterials);// 个人材料导出
 
 }
