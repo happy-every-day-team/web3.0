@@ -3,9 +3,20 @@
 const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
-  async index() {
-    const { ctx } = this;
-    ctx.body = 'hi, egg';
+
+  async getHome() {
+
+    const { ctx } = this
+
+    try{
+      const params1 = {
+        attributes: []
+      }
+
+    } catch(err) {
+      console.log(err)
+      ctx.status = 404
+    }
   }
 }
 

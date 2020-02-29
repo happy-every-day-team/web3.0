@@ -189,7 +189,7 @@ class ArticleEditController extends Controller {
           postlink: ''
         }
         const article = await ctx.service.mysql.findById(id, table)
-        await article.update(params)
+        // await article.update(params)
         await ctx.service.qiniu.deleteFile('webimg', key)
         ctx.status = 200
         ctx.body = {
@@ -282,7 +282,7 @@ class ArticleEditController extends Controller {
         }
         const media = await ctx.service.mysql.findAll(params, 'Media')
         media.map(item => {
-          await item.update({status: 0})
+          // await item.update({status: 0})
         })
 
         ctx.status = 200

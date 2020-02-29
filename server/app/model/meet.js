@@ -1,10 +1,10 @@
 'use strict'
 
 module.exports = app => {
-  const { INTEGER, DATE, STRING, BOOLEAN } = app.Sequelize
+  const { DATE, STRING, BOOLEAN } = app.Sequelize
     const Meet = app.model.define('Meet', {
       meet_id: {
-        type: INTEGER(16),
+        type: STRING(16),
         primaryKey: true,
       },
       created_date: DATE,
@@ -35,6 +35,7 @@ module.exports = app => {
     })
 
     Meet.associate = function() {
+      app.model.Meet.hasMany(app.model.Attendee, { foreignKey: 'meet_id', targetKey: 'attendee_id' })
       app.model.Meet.belongsTo(app.model.User, { foreignKey: 'user_id', targetKey: 'id'})
       app.model.Meet.belongsTo(app.model.User, { foreignKey: 'log_writer', targetKey: 'id'})
     }

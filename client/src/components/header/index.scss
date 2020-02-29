@@ -1,0 +1,45 @@
+.container {
+  min-height: 100v;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+
+  a {
+    color: #ccc;
+    text-decoration: none;
+
+    &:hover {
+      color: #1890ff;
+      cursor: pointer;
+    }
+  }
+
+  .nav {
+    background-color: rgba(0, 0, 0, .75);
+    height: 4rem;
+    line-height: 4rem; 
+    font-size: 1.125rem;
+    text-align: center;
+    color: #ccc;
+  }
+  .content {
+    background-color: red;
+    height: 80vh;
+    width: 100v;
+    position: relative;
+  }
+
+  .pzhuweb-copyright {
+    background-color: #373d41;
+    font-size: 1rem;
+    color: #ccc;
+    text-align: center;
+
+    .about-us {
+      margin-top: 20px;
+      background-color: blue;
+    }
+
+  }
+}
