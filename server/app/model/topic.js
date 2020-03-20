@@ -8,7 +8,7 @@ module.exports = app => {
         primaryKey: true,
       },
       topic_name: STRING(255),
-      created_date: DATE,
+      created_data: DATE,
       description: STRING(255),
       flag: BOOLEAN(4),
       origin: {
@@ -19,7 +19,7 @@ module.exports = app => {
           key: 'id',
         }
       },
-      modify_date: DATE
+      modify_data: DATE
     }, {
       timestamps: false,
       underscored: true,

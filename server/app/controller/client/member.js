@@ -4,14 +4,20 @@ const Controller = require('egg').Controller;
 
 class MemberController extends Controller {
     async getMemberInfo() {
-        const { ctx } = this
+        const { ctx,app } = this
+        const Op = app.Sequelize.Op
         const params = {
             include: [
                 { model: this.app.model.School, attributes: ['name'] },
                 { model: this.app.model.Major, attributes: ['name'] },
                 { model: this.app.model.Domain, attributes: ['name'] },
-                { model: this.app.model.User, attributes: ['name'] },
+                { model: this.app.model.User, attributes: ['name','status','email'], where:{
+                    status: {
+                        [Op.ne]: -1
+                    }
+                }},
             ],
+            
         }
         let member = await ctx.service.mysql.findAll(params, 'UserInfo')
         if (member !== 0) {

@@ -1,0 +1,8 @@
+.el-menu {
+    background-color: #fff;
+
+    .is-active {
+        border-right: 3px solid #1890ff;
+        background-color: rgba(24, 144, 255, 0.2);
+    }
+}

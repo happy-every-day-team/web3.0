@@ -1,0 +1,55 @@
+.layout {
+    height: inherit;
+    width: inherit;
+
+    .header {
+        // color: #fff;
+        background-color: #ff99ff;
+        li {
+            color: #fff;
+        }
+
+        .fl {
+
+            .header-logo {
+            }
+
+            .header-dynamic {
+            }
+
+            .header-resource {
+            }
+
+            .header-result {
+            }
+
+            .header-member {
+            }
+        }
+
+        .fr {
+
+            .header-login {
+            }
+
+            .header-register {
+            }
+        }
+    }
+
+    .body {
+        height: 91.5%;
+        background-color: #ff9999;
+    }
+
+    .foolter {
+        // height: 20%;
+        background-color: #111111;
+    }
+}
+
+// 阿离:   生生爆伤    地藏
+// 小白:   速生生      涅槃
+// 日和坊: 生生暴      树妖
+// 久次良: 速攻暴      招财
+// 化鲸:   速攻生      木魁

@@ -35,8 +35,30 @@ class UserInfoController extends Controller {
     }
     async EditUserInfo() {
         const { ctx } = this
-        const { id, school, major, domain, avator, phone, description } = ctx.params
-        const value = { id, }
+        const { id, school, major, domain, avator, phone, description, isCDN } = ctx.params
+        const userInfo = 'UserInfo'
+        const isUser = await ctx.service.mysql.findById(id, userInfo)
+        if (isUser === null) {
+            ctx.status = 200
+            ctx.body = {
+                success: 0,
+                message: '账号不存在'
+            }
+        } else {
+            let cdn
+            if (isCDN) {
+                cdn = await ctx.service.quniu.getCDN(avator)
+            } else {
+                cdn = avator
+            }
+        }
+        const value = { school, major, domain, phone, description, avator: cdn }
+        const url = isUser.dataValues.avator
+        const urlArr = url.split('/')
+        const key = arr[3]
+        if (key !== 'avatar' && url !== cdn){
+            await ctx.service.quniu.deleteFile('')
+        }
 
     }
     async getOtherInfo() {
