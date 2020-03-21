@@ -26,7 +26,17 @@ export default {
                 ...payload
             }
         },
+        getMember(state,{payload:id},getdata){
+            console.log(state)
+            state.oldmember.find(item=>{
+                if(item.id === id){
+                    getdata(item)
+                    return
+                }
+            })
+        },
         filterUser(state,{domainId}) {
+            console.log(state.oldmember)
             let user = []
             if (domainId === 0) {
                 user = state.oldmember
@@ -37,7 +47,6 @@ export default {
                     }
                 })
             }
-    
             return{
                 ...state,
                 member:filterUserByGrade(user),
@@ -50,10 +59,10 @@ export default {
         *getMembers({ payload }, { call, put }) {
             let member = yield call(memberAPI.getMemberInfo)
             let domain = yield call(domainAPI.getDoMainInfo)
-            domain = filterDomainNum(domain.data, member.data)
-            const grade = filterGrade(member.data)
-            const oldmember = member.data
-            member = filterUserByGrade(member.data)
+            domain = filterDomainNum(domain, member)
+            const grade = filterGrade(member)
+            const oldmember = member
+            member = filterUserByGrade(member)
             yield put({
                 type: 'save',
                 payload: {

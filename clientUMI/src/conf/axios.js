@@ -5,6 +5,7 @@ axios.defaults.baseURL = "http://127.0.0.1:7001/"
 axios.default.timeOut = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
+const message = 0
 //允许axio请求携带cookies
 axios.defaults.withCredentials = true;
 
@@ -24,29 +25,33 @@ axios.interceptors.request.use(
 	}
 );
 // 响应拦截器
-// axios.interceptors.response.use(
-// 	(response) => {
-// 		if (response.status === 200) {
-// 			return Promise.resolve(response);
-// 		} else {
-// 			return Promise.reject(response);
-// 		}
-// 	},
-// 	(error) => {
-// 		if (error.response.status) {
-// 			switch (error.response.status) {
-// 				case 403:
-// 					message.error('登录过期，请重新登录');
-// 					sessionStorage.removeItem('token');
-// 					hashHistory.push('/login')
-// 					break;
-// 				case 404:
-// 					message.error("资源不存在");
-// 					break;
-// 				default:
-// 					message.error('请求有误');
-// 			}
-// 		}
-// 	}
-// );
+axios.interceptors.response.use(
+	(response) => {
+		if (response.status === 200) {
+			if(response.data.success === 1){
+				return Promise.resolve(response.data);
+			}else{
+				
+			}
+		} else {
+			return Promise.reject(response);
+		}
+	},
+	(error) => {
+		if (error.response.status) {
+			switch (error.response.status) {
+				case 403:
+					message.error('登录过期，请重新登录');
+					sessionStorage.removeItem('token');
+					hashHistory.push('/login')
+					break;
+				case 404:
+					message.error("资源不存在");
+					break;
+				default:
+					message.error('请求有误');
+			}
+		}
+	}
+);
 export default axios;

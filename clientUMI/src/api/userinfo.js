@@ -4,7 +4,7 @@ import axios from '../conf/axios'
 const UserInfo = {
     getUserInfo(params) {
         return new Promise((resolve, reject) => {
-            axios.get(`${base.getUserInfo}`, params).then(res => {
+            axios.get(`${base.getUserInfo+'/'+params}`).then(res => {
                 resolve(res.data)
             }).catch(err => {
                 reject(err.data)
@@ -13,7 +13,7 @@ const UserInfo = {
     },
     getOtherInfo(params) {
         return new Promise((resolve, reject) => {
-            axios.get(`${base.getOtherInfo}`, params).then(res => {
+            axios.get(`${base.getOtherInfo+'/'+params}`).then(res => {
                 resolve(res.data)
             }).catch(err => {
                 reject(err.data)

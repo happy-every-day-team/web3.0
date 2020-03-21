@@ -1,5 +1,5 @@
 import { Card, Button } from 'antd'
-import { connect } from 'umi'
+import { connect, Link } from 'umi'
 import React, { useEffect, useState } from 'react'
 import { PhoneOutlined, SmileOutlined, MailOutlined, IdcardOutlined } from '@ant-design/icons'
 import "./index.less"
@@ -11,20 +11,21 @@ function MemberList({ userList, grade, onhandleUserInfo }) {
     return (
         <div className="memberList">
             {grade.map(item => {
-                return <Card className="memberList-item" key={item}
+                return <Card
+                    className="memberList-item"
+                    key={item}
                     title={item}>
                     {
                         userList[item].map(item1 => {
-                            return <Card key={item1.id} className="member-item">
+                            return <Card key={item1.id} className="member-item" hoverable={true}>
                                 <div className="member-item-left">
                                     <div className="member-item-avatar">
                                         <img src={item1.avatar} className="member-item-img" />
                                     </div>
 
-                                    <Button
-                                        type="primary"
-                                        onClick={onhandleUserInfo}
-                                    >查看详情</Button>
+                                    <Button type="primary">
+                                        <Link to={'/UserInfo/' + item1.id+'/topic'}>查看详情</Link>
+                                    </Button>
                                 </div>
                                 <div className="member-item-right">
                                     <div className="member-item-right-name"><h2>{item1.User.name}</h2></div>
@@ -58,9 +59,9 @@ function MemberList({ userList, grade, onhandleUserInfo }) {
 
 function mapStateToProps(state) {
     return {
-        grade:state.grade,
+        grade: state.grade,
         userList: state.member,
-        
+
     }
 }
 export default MemberList

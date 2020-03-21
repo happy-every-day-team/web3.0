@@ -38,11 +38,11 @@ const MemberData = (({ dispatch, member,grade,domain}) => {
     )
 })
 
-function mapStateToProps(state) {
+function mapStateToProps({member}) {
     return {
-        domain: state.member.domain,
-        grade:state.member.grade,
-        member: state.member.member,
+        domain: member.domain,
+        grade:member.grade,
+        member: member.member,
         
     }
 }
