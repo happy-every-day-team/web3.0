@@ -1,6 +1,6 @@
 import memberAPI from '../api/member'
 import domainAPI from '../api/domain'
-import {filterDomainNum,filterGrade,filterUserByGrade} from '../conf/filter'
+import {filterdoMainNum,filterGrade,filterUserByGrade} from '../util/filter'
 export default {
     namespace: 'member',
     state: {
@@ -59,7 +59,7 @@ export default {
         *getMembers({ payload }, { call, put }) {
             let member = yield call(memberAPI.getMemberInfo)
             let domain = yield call(domainAPI.getDoMainInfo)
-            domain = filterDomainNum(domain, member)
+            domain = filterdoMainNum(domain, member)
             const grade = filterGrade(member)
             const oldmember = member
             member = filterUserByGrade(member)

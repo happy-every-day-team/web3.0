@@ -1,20 +1,37 @@
 const base = {
     // 个人中心
-    getUserInfo: "/user/getUserInfo",
+    getUserInfo: "/user/getUserInfo",   
     getOtherInfo: "/user/getOtherInfo",
     // 成员管理
     getMemberInfo: "/member/getMemberInfo",
     getDomainInfo: "/member/getDomainInfo",
 
     // 课题管理
-    delTopic:"/topic/delTopic",
+    delTopic: "/topic/delTopic",
     getTopicInfo: "/topic/getTopicInfo",
-    getTopicByUser: "/topic/getTopic",
+    getTopicByUserId: "/topic/getTopicByUserId",
 
     applyTopic: "/topic/apply",
-    updateTopic: "/topic/update"
+    updateTopic: "/topic/update",
 
+    // 文章管理
+    getArticleByUserId: "/article/getArticleByUserId",
+    getArticle: '/resource/getArticle',
+    getTechnology: "/article/getTechnology",
+
+    // 成果管理
+    getAchievementByUserId: '/achievement/getAchievementByUserId',
+    getAchievement: '/resource/getAchievement',
+    getAchievementType: '/achievement/getAchievementType',
+
+    // 资源管理
+    getResourceByUserId: '/resource/getResourceByUserId',
+    getResource: '/resource/getResource',
+    getResourceType: '/resource/getResourceType',
+
+    // 
 
 }
 
 export default base
+

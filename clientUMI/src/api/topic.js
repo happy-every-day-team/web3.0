@@ -1,19 +1,18 @@
 import base from './base'
 import axios from '../util/axios'
-
-const UserInfo = {
-    getUserInfo(params) {
+export default {
+    getListByUserId(params) {
         return new Promise((resolve, reject) => {
-            axios.get(`${base.getUserInfo + '/' + params}`).then(res => {
+            axios.get(`${base.getArticleByUserId + "/" + params}`).then(res => {
                 resolve(res.data)
             }).catch(err => {
                 reject(err.data)
             })
         })
     },
-    getOtherInfo(params) {
+    getTag() {
         return new Promise((resolve, reject) => {
-            axios.get(`${base.getOtherInfo + '/' + params}`).then(res => {
+            axios.get(`${base.getTechnology}`).then(res => {
                 resolve(res.data)
             }).catch(err => {
                 reject(err.data)
@@ -21,5 +20,3 @@ const UserInfo = {
         })
     }
 }
-
-export default UserInfo

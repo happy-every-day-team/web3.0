@@ -15,6 +15,7 @@ axios.interceptors.request.use(
 		if (config.method === 'post') {
 			config.data = qs.stringify(config.data);
 		}
+		console.log("打印请求日志" + config.url)
 		// if (sessionStorage.token) {
 		// 	config.headers.Authorization = sessionStorage.token || sessionStorage.admin;
 		// }
@@ -28,10 +29,11 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
 	(response) => {
 		if (response.status === 200) {
-			if(response.data.success === 1){
+			if (response.data.success === 1) {
+				console.log("打印响应日志" + response.config.url)
 				return Promise.resolve(response.data);
-			}else{
-				
+			} else {
+				return Promise.resolve(response.data);
 			}
 		} else {
 			return Promise.reject(response);

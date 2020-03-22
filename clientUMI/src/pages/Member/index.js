@@ -19,9 +19,6 @@ const MemberData = (({ dispatch, member,grade,domain}) => {
            domainId
        })
     }
-    function getUserInfo(id) {
-
-    }
 
     return (
         <Layout>
@@ -32,7 +29,7 @@ const MemberData = (({ dispatch, member,grade,domain}) => {
             </Sider>
 
             <Content>
-                <MemberList userList={member} grade={grade} onhandleUserInfo={getUserInfo}></MemberList>
+                <MemberList userList={member} grade={grade}></MemberList>
             </Content>
         </Layout>
     )

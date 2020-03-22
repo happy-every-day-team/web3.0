@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Menu } from 'antd'
-import { connect } from 'umi'
 import "./index.less"
 
 function Classify({ title, data, onhandleClassify }) {
@@ -25,12 +24,6 @@ function Classify({ title, data, onhandleClassify }) {
         </div>
 
     )
-}
-
-function mapStateToProps(state) {
-    return {
-        data:state.domain,
-    }
 }
 
 export default Classify

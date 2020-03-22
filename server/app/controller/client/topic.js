@@ -109,7 +109,6 @@ class TopicController extends Controller {
                 flag: 1
             }
         }
-        console.log(userId)
         let topic = await ctx.service.mysql.findAll(params, 'Topic')
         if(topic)
         ctx.status = 200

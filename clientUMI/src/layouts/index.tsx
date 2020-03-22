@@ -13,15 +13,15 @@ export default function (props: any) {
                 <Header>
                     <div className="container-header">
                         <div className="logo"></div>
-                        <Menu mode="horizontal" defaultSelectedKeys={["article"]}>
-                            <Menu.Item key="article"><Link to="/article">团队动态</Link></Menu.Item>
-                            <Menu.Item key="resource"><Link to="/resource">资源分享</Link></Menu.Item>
-                            <Menu.Item key="achievement"><Link to="/achievement">成果展示</Link></Menu.Item>
-                            <Menu.Item key="member"><Link to="/Member">成员展示</Link></Menu.Item>
+                        <Menu mode="horizontal" defaultSelectedKeys={[`${props.location.pathname}`]}>
+                            <Menu.Item key="/Article"><Link to="/Article">团队动态</Link></Menu.Item>
+                            <Menu.Item key="/Resource"><Link to="/Resource">资源分享</Link></Menu.Item>
+                            <Menu.Item key="/Achievement"><Link to="/Achievement">成果展示</Link></Menu.Item>
+                            <Menu.Item key="/Member"><Link to="/Member">成员展示</Link></Menu.Item>
 
-                            <Menu.Item key="login" className="fr"><Link to="/login">登录</Link></Menu.Item>
+                            <Menu.Item key="/Login" className="fr"><Link to="/Login">登录</Link></Menu.Item>
                             <span className="fr">/</span>
-                            <Menu.Item key="register" className="fr"><Link to="/register">注册</Link></Menu.Item>
+                            <Menu.Item key="/Register" className="fr"><Link to="/Register">注册</Link></Menu.Item>
                         </Menu>
                     </div>
 

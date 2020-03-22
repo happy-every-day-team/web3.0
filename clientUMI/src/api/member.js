@@ -1,5 +1,5 @@
 import base from './base'
-import axios from '../conf/axios'
+import axios from '../util/axios'
 
 const Member = {
     getMemberInfo() {

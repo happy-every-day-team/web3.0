@@ -7,23 +7,13 @@ import "./layout.less"
 const { Content, Sider } = Layout
 
 const UserInfo = ({ user, userOther, dispatch, match, children }: any) => {
-    const userMenu = [
-        { name: '课题', key: `/UserInfo/${match.params.id}/topic` },
-        { name: '文章', key: `/UserInfo/${match.params.id}/article` },
-        { name: '成果', key: `/UserInfo/${match.params.id}/achievement` },
-        { name: '资源', key: `/UserInfo/${match.params.id}/resource` },
-        { name: '收藏', key: `/UserInfo/${match.params.id}/love` }
-
-    ]
+    
     useEffect(() => {
         dispatch({
             type: 'user/getUserInfo',
             payload: { id: match.params.id },
         })
     }, [])
-    function menuSwitch(item: any) {
-        history.push(item.key)
-    }
     return (
         <Layout className="user">
             <Content>
@@ -50,16 +40,7 @@ const UserInfo = ({ user, userOther, dispatch, match, children }: any) => {
                     </div>
                 </div>
                 <div className="content-body">
-                    <Menu
-                        className="content-body-navbar"
-                        mode="horizontal"
-                        defaultSelectedKeys={[`/UserInfo/${match.params.id}/topic`]}
-                        onSelect={menuSwitch}>{
-                            userMenu.map(item => {
-                                return <Menu.Item key={item.key} >{item.name}</Menu.Item>
-                            })}
-                    </Menu>
-                    <div className="content-body-list">{children}</div>
+                    {children}
                 </div>
 
             </Content>
