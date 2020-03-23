@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { List, Tag, Card, Select, Input, Menu, Skeleton, Avatar } from 'antd'
+import { List, Tag, Card, Select, Input, Menu } from 'antd'
 import { connect, history } from 'umi'
 import './index.less'
 
