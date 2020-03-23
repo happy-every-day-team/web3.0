@@ -28,6 +28,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.12.20",
+    "react-infinite-scroller": "^1.2.4",
     "umi": "^3.0.8",
     "yorkie": "^2.0.0"
   }

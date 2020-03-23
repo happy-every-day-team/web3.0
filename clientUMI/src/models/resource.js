@@ -1,11 +1,8 @@
-import articleAPI from '../api/article'
-import achievementAPI from '../api/achievement'
 import resourceAPI from '../api/resource'
-import topicAPI from '../api/topic'  //课题占位
-import loveAPI from '../api/love'  //收藏占位
 import {filterTagNum} from '../util/filter'
+
 export default {
-    namespace: 'aar',
+    namespace: 'resource',
     state: {
         list: [],
         oldList: [],
@@ -20,7 +17,7 @@ export default {
                 ...payload
             }
         },
-        filterByTag(state, { payload: { tag } }) {
+        filterResourceByTag(state, { payload: { tag } }) {
             if (-1 === tag) {
                 return {
                     ...state,
@@ -40,23 +37,27 @@ export default {
         }
     },
     effects: {
-        *getArticleAndTag({ payload: params }, { call, put }) {
-            const classify = [topicAPI, articleAPI, achievementAPI, resourceAPI, loveAPI]
-            const tag = ['Technology', 'Technology', 'AchievementType', 'ResourceType']
-            const link = ['id', 'id', 'achievementlink', 'link']
-            let list
-            if (params.id === '' || params.id === undefined) {
-                list = yield call(classify[params.index].getList)
+        *getResourceAndTag({ payload: params }, { call, put }) {
+            let list = []
+            let tags = []
+            console.log(params)
+            if (!params) {
+                list = yield call(resourceAPI.getList)
             } else {
-                list = yield call(classify[params.index].getListByUserId, params.id)
+                list = yield call(resourceAPI.getListByUserId, params)
             }
-            let tags = yield call(classify[params.index].getTag)
+            tags = yield call(resourceAPI.getTag)
+            if(list.length === 0||tags.length === 0){
+                return;
+            }
             tags = filterTagNum(tags,list)
             list = list.map(item => {
                 return {
                     ...item,
-                    tag: item[tag[params.index]],
-                    link: ((params.index === 1) ? '/article/' : '') + item[link[params.index]]
+                    tag: item.ResourceType,
+                    link: item.link,
+                    avatar:item.UserInfo.avatar,
+                    username:item.User.name
                 }
             })
             yield put({
@@ -64,8 +65,7 @@ export default {
                 payload: {
                     list,
                     tags,
-                    oldList: list,
-                    loading: false
+                    oldList: list
                 }
             })
         }

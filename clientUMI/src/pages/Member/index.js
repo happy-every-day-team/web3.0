@@ -24,7 +24,8 @@ const MemberData = (({ dispatch, member,grade,domain}) => {
         <Layout>
             <Sider
                 breakpoint="lg"
-                collapsedWidth="0">
+                collapsedWidth="0"
+                width={250}>
                 <Classify title="成员分类" data={domain} onhandleClassify={filterUser} />
             </Sider>
 

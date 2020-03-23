@@ -41,6 +41,7 @@ module.exports = app => {
 
     Resource.associate = function() {
       app.model.Resource.belongsTo(app.model.UserInfo, { foreignKey: 'userid', targetKey: 'id'})
+      app.model.Resource.belongsTo(app.model.User, { foreignKey: 'userid', targetKey: 'id'})
       app.model.Resource.belongsTo(app.model.ResourceType, { foreignKey: 'typeid', targetKey: 'id'})
     }
 

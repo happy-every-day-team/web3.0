@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Children } from 'react'
 import { Layout } from 'antd'
 import { connect } from 'umi'
 
 import Classify from '../components/Classify'
+import ResourceList from '../components/List'
 
 const { Sider, Content } = Layout
 
-function Resource({ resourceType, resource, dispatch }: any) {
+function Resource({ resourceType, resource, dispatch, hasMore, loading }: any) {
     useEffect(() => {
         dispatch({
-            type: 'aar/getArticleAndTag',
-            payload: {
-                index: 3,
-            }
+            type: 'resource/getResourceAndTag',
         })
     }, []);
 
     function filterResource(tag: Number) {
         dispatch({
-            type: 'aar/filterByTag',
+            type: 'resource/filterResourceByTag',
             payload: {
                 tag
             }
@@ -27,22 +25,24 @@ function Resource({ resourceType, resource, dispatch }: any) {
     return (
         <Layout>
             <Sider
-                breakpoint="lg"
-                collapsedWidth="0">
+                breakpoint="md"
+                collapsedWidth="0"
+                width={250}>
                 <Classify title="资源分类" data={resourceType} onhandleClassify={filterResource} />
             </Sider>
             <Content>
-                
+                <ResourceList data={resource} flag={false} hasMore={hasMore} loading={loading} />
             </Content>
         </Layout>
     )
 }
 
-function mapStateToProps({ aar }: any) {
-    console.log(aar)
+function mapStateToProps({ resource }: any) {
     return {
-        resourceType: aar.tags,
-        resource: aar.list
+        resourceType: resource.tags,
+        resource: resource.list,
+        hasMore: resource.hasMore,
+        loading: resource.loading,
     }
 }
 export default connect(mapStateToProps)(Resource)
